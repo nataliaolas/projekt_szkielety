@@ -1,2 +1,2 @@
-# projekt_szkielety
-Projekt na przedmiot szkielety tworzenia aplikacji 
+# wedding_planner
+Projekt na przedmiot szkielety tworzenia aplikacji- planer ślubny
