@@ -4,3 +4,4 @@ from . import views
 urlpatterns = [
     path('/home', views.main_cards, name='main_cards'),
 ]
+
