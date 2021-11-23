@@ -8,6 +8,11 @@ def main_cards(request):
     context = {'elo':'elo'}
     return HttpResponse(template.render(context, request))
 
+def register(request):
+    template = loader.get_template('wedding/register.html')
+    context = {'elo':'elo'}
+    return HttpResponse(template.render(context, request))
+
 
     
 
