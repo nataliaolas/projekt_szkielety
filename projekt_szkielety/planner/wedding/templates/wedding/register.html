@@ -1,0 +1,34 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'wedding/register.css' %}">
+<div class="container register-form">
+  <div class="form">
+      <div class="note">
+          <p>Zarejestruj się na wyjątkowej platformie, dzięki której Twój wielki dzień będzie perfekcyjny w każdym calu.</p>
+      </div>
+
+      <div class="form-content">
+          <div class="row">
+              <div class="col-md-6">
+                      <input type="text" class="form-control" placeholder="Imię Pani młodej *" value=""/>
+                      </div>
+                      <div class="col-md-6">
+                      <input type="text" class="form-control" placeholder="Imię Pana młodego" value=""/>
+                      </div>
+              </div>
+                  <div class="form-group">
+                      <input type="text" class="form-control" placeholder="Data ślubu" value=""/>
+              </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Twoje hasło *" value=""/>
+              </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Potwierdz haslo *" value=""/>
+                </div>
+                <button type="button" class="btnSubmit">Submit</button>
+          </div>
+      </div>
+  </div>
+</div>
+{% endblock %}
