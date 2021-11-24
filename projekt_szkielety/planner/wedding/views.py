@@ -13,6 +13,11 @@ def register(request):
     context = {'elo':'elo'}
     return HttpResponse(template.render(context, request))
 
+def login(request):
+    template = loader.get_template('wedding/login.html')
+    context = {'elo':'elo'}
+    return HttpResponse(template.render(context, request))    
+
 
     
 
