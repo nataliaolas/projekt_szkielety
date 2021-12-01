@@ -18,8 +18,16 @@ class StandardInfo(models.Model):
 
 class Music(StandardInfo):
     type = models.CharField(max_length=20)
+
     def get_absolute_url(self):
         return reverse('music-detail', kwargs={'pk' : self.pk})
+
+    def save(self, *args, **kwargs):
+        print("\n\n********************************")
+        print(f'ARGS: {args}')
+        print(f'KWARGS: {kwargs}')
+        print("********************************\n\n")
+        super(Music, self).save(*args, **kwargs)
 
 class Invitations(StandardInfo):
     quantity = models.PositiveIntegerField()

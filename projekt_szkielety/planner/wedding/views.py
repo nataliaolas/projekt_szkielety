@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
 from django.views.generic import CreateView, TemplateView, ListView
-from .models import Photographer
+from .models import AdditionalServices, Photographer, WeddingHall
 # from django.views.generic.base import TemplateView, ListView
 # Create your views here.
 
@@ -15,8 +15,25 @@ class MainCardsView(TemplateView):
     template_name = "wedding/main_page.html"
 
 
+class MusicListView(ListView):
+    model = Music
+
+class InvitationsListView(ListView):
+    model = Invitations
+
 class PhotographerListView(ListView):
     model = Photographer
+
+class CeremonyPlaceListView(ListView):
+    model = CeremonyPlace
+
+class AdditionalServicesListView(ListView):
+    model = AdditionalServices
+
+class WeddingHallListView(ListView):
+    model = WeddingHall
+
+
 
 
 def register(request):
@@ -35,10 +52,17 @@ class AddMusicView(CreateView):
     form_class = MusicForm
     template_name = 'wedding/music_add.html'
 
+    def form_invalid(self, form):
+        print("\nFORM INVALID!!\n")
+        print(f"\n SELF: {self}!!\n")
+        print(f"\n Form: {form}!!\n")
+        return super().form_invalid(form)
+
 class AddInvitationsView(CreateView):
     model = Invitations
     form_class = InvitationsForm
     template_name = 'wedding/invitations_add.html'
+
 
 class AddPhotographerView(CreateView):
     model = Photographer

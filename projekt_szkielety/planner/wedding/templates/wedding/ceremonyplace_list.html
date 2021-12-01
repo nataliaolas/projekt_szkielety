@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+{% load static %}
+{% load tags %}
+{% block content %}
+{% if object_list %}
+
+  {% get_table object_list%}
+  {% else %}
+  <div style="text-align:center">
+  <h5>Nie dodałeś jeszcze żadnego miejsca ślubu</h5>
+  <button type="submit" class="btn btn-dark"> Dodaj dodaj miejsce ślubu</button>
+  </div>
+  {% endif %}
+{% endblock %}

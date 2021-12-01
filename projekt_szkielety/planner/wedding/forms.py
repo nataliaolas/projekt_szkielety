@@ -3,16 +3,25 @@ from django.db.models import fields
 from .models import CeremonyPlace, Invitations, Photographer, StandardInfo, Music
 
 
-# class StandardForm(Forms.ModelForm):
-#     class Meta:
-#         model:StandardInfo
-#         fields='__all__'
+class StandardForm(forms.ModelForm):
+    class Meta:
+        model:StandardInfo
+        fields='__all__'
+        exclude = ('approved',)
 
-class MusicForm(forms.ModelForm):
+        def save(self, *args, **kwargs):
+            #Calling the parent model form save method
+            print("\n\n ********* Standard FORM ***********")
+            print(f'ARGS: {args}')
+            print(f'KWARGS: {kwargs}')
+            print("********************************\n\n")
+            super(StandardForm, self).save(*args, **kwargs)
+
+class MusicForm(StandardForm):
     class Meta:
         model = Music
         fields='__all__'
-        exclude = ('approved',)
+        # exclude = ('approved',)
 
         widgets = {
             'type' : forms.TextInput(attrs={'class' : 'form-control', 'placeholder': 'Typ'}),
@@ -26,6 +35,14 @@ class MusicForm(forms.ModelForm):
         } 
         labels = {'type' : 'Typ', 'name' : 'Nazwa', 'phone_number' : 'Nr telefonu',
          'email_address' : 'Adres email' ,'price' : 'Cena' ,'address' : 'Adres' ,'caution' : 'Kaucja', 'notes' : 'Notatki' }
+
+        def save(self, *args, **kwargs):
+            #Calling the parent model form save method
+            print("\n\n ********* MUSIC FORM ***********")
+            print(f'ARGS: {args}')
+            print(f'KWARGS: {kwargs}')
+            print("********************************\n\n")
+            super(MusicForm, self).save(*args, **kwargs)
 
 
 
