@@ -3,43 +3,7 @@
 {% load tags %}
 {% block content %}
 {% if object_list %}
-{% comment %} <table class="table">
-    <thead>
-      {% comment %} <tr class="table-danger">
-        <th scope="col">Nazwa</th>
-        <th scope="col">Nr Telefonu</th>
-        <th scope="col">Cena</th>
-        <th scope="col">Kaucja</th>
-        <th scope="col">Status</th>
-        <th scope="col">Akcja</th>
-        {% comment %} <th scope="col"></th>
-      </tr>
-      {% get_columns_names object_list %}
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-        <td>@mdo</td>
-        <td><button type="submit" class="btn btn-dark">Szczegóły</button></td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-        <td>@twitter</td>
-      </tr>
-    </tbody>
-  </table> {% endcomment %}
+
   {% get_table object_list%}
   {% else %}
   <div style="text-align:center">

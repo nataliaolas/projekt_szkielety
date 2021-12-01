@@ -1,6 +1,6 @@
 from django import forms
 from django.db.models import fields
-from .models import StandardInfo, Music
+from .models import CeremonyPlace, Invitations, Photographer, StandardInfo, Music
 
 
 # class StandardForm(Forms.ModelForm):
