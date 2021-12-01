@@ -8,7 +8,7 @@
   {% else %}
   <div style="text-align:center">
   <h5>Nie dodałeś jeszcze żadnej muzyki</h5>
-  <button type="submit" class="btn btn-dark"> Dodaj muzyke</button>
+  <button type="submit" class="btn btn-dark"><a href={% url 'music-add' %} > Dodaj muzyke </a></button>
   </div>
   {% endif %}
 {% endblock %}

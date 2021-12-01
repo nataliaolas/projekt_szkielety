@@ -3,10 +3,7 @@
 
 <div class="card" style="width: 24rem; background-color: pink; position: relative; left: 40%; right: 60%;" >
     <div class="card-body">
-      <h5 class="card-title">Add Ceremony Place</h5>
-      <p class="card-text">
-        <div class = "form-group">
-            <form action="{% url 'ceremony_place-add' %}" method="post">
+      <h5 class="card-title"> Add Ceremony Place </h5>
                 {% csrf_token %}
                 {{form.guest_capacity.label}}
                 {{form.guest_capacity}}
@@ -23,7 +20,7 @@
                 {{form.notes.label}}
                 {{form.notes}}  
                 <br>           
-                <button type="submit" class="btn btn-dark">Add</button>
+                <button type="submit" class="btn btn-dark"> Add</button>
             </form>
             </div>
         </p>

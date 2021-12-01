@@ -1,5 +1,6 @@
 myenv/*
 env/*
+venv/*
 *.pyc
 __pycache__/*
 planner/planner/__pycache__/*

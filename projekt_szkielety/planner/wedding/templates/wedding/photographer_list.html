@@ -8,7 +8,7 @@
   {% else %}
   <div style="text-align:center">
   <h5>Nie dodałeś jeszcze żadnego fotografa</h5>
-  <button type="submit" class="btn btn-dark"> Dodaj fotografa</button>
+  <button type="submit" class="btn btn-dark"><a href={% url 'photographer-add' %} > Dodaj fotografa </a></button>
   </div>
   {% endif %}
 {% endblock %}
