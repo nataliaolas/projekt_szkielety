@@ -1,6 +1,6 @@
 from django.db import models
 from django.db.models.fields import CharField, PositiveIntegerField
-
+from django.urls import reverse
 
 class StandardInfo(models.Model):
     name = models.CharField(max_length=100)
@@ -18,23 +18,37 @@ class StandardInfo(models.Model):
 
 class Music(StandardInfo):
     type = models.CharField(max_length=20)
-
+    def get_absolute_url(self):
+        return reverse('music-detail', kwargs={'pk' : self.pk})
 
 class Invitations(StandardInfo):
     quantity = models.PositiveIntegerField()
+    def get_absolute_url(self):
+        return reverse('invitations-detail', kwargs={'pk' : self.pk})
 
 class Photographer(StandardInfo):
     services = models.TextField()
+    def get_absolute_url(self):
+        return reverse('photographer-detail', kwargs={'pk' : self.pk})
 
 class CeremonyPlace(StandardInfo):
     guest_capacity = models.PositiveIntegerField()
+    def get_absolute_url(self):
+        return reverse('ceremony-place-detail', kwargs={'pk' : self.pk})
+
 
 class AdditionalServices(StandardInfo):
     importance = models.IntegerField(max_length = 10)
+    def get_absolute_url(self):
+        return reverse('additional-service-detail', kwargs={'pk' : self.pk})
+
 
 class WeddingHall(StandardInfo):
     accomodation = models.BooleanField()
     guest_capacity = models.PositiveIntegerField()
+    def get_absolute_url(self):
+        return reverse('wedding-hall-detail', kwargs={'pk' : self.pk})
+
 
 class Guest(models.Model):
     DIET_TYPES= [
@@ -55,6 +69,9 @@ class Guest(models.Model):
     age = models.IntegerField(max_length = 3)
     invited = models.BooleanField(default = False)
     attendance = models.BooleanField(default = False)
+    def get_absolute_url(self):
+        return reverse('guest-detail', kwargs={'pk' : self.pk})
+
 
 class Timetable(models.Model):
     name = models.TextField(max_length = 50)

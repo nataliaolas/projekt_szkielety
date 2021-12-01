@@ -1,0 +1,24 @@
+{% load static %}
+{% load tags %}
+<table class="table">
+    <thead>
+        <tr class="table-danger">
+            <th scope="col">#</th>
+            {% for column in columns %}
+                <th scope="col">{{column}}</th>
+            {% endfor %}
+            <th scope="col">Wyświetl szczegóły</th>
+            </tr>
+    <tbody>
+    {% for item in items %}
+    <tr>
+        <th scope="row">{{forloop.counter}}</th>
+        {% for column in columns %}
+        <td>{% get_attribute_for_object item column%}</td>
+        {% endfor %}
+        <td><a href={{ item.get_absolute_url }} class="btn btn-dark">Szczegóły</a></td>
+      </tr>
+    
+    {% endfor %}
+    </tbody>
+  </table>
