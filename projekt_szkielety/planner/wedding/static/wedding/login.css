@@ -1,0 +1,8 @@
+.gradient-custom {
+  /* fallback for old browsers */
+  background: linear-gradient(45deg,#FF5370,#ff869a);
+}
+.bg-c-pink {
+    /* fallback for old browsers */
+    background: linear-gradient(45deg,#FF5370,#ff869a);
+  }
