@@ -5,7 +5,7 @@ from .models import CeremonyPlace, Invitations, Photographer, StandardInfo, Musi
 
 class StandardForm(forms.ModelForm):
     class Meta:
-        model:StandardInfo
+        model=StandardInfo
         fields='__all__'
         exclude = ('approved',)
 
@@ -21,7 +21,7 @@ class MusicForm(StandardForm):
     class Meta:
         model = Music
         fields='__all__'
-        # exclude = ('approved',)
+        exclude = ('approved',)
 
         widgets = {
             'type' : forms.TextInput(attrs={'class' : 'form-control', 'placeholder': 'Typ'}),
@@ -43,6 +43,9 @@ class MusicForm(StandardForm):
             print(f'KWARGS: {kwargs}')
             print("********************************\n\n")
             super(MusicForm, self).save(*args, **kwargs)
+
+
+
 
 
 
