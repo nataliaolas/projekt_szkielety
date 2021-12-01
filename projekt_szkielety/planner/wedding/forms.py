@@ -26,3 +26,56 @@ class MusicForm(forms.ModelForm):
         } 
         labels = {'type' : 'Typ', 'name' : 'Nazwa', 'phone_number' : 'Nr telefonu',
          'email_address' : 'Adres email' ,'price' : 'Cena' ,'address' : 'Adres' ,'caution' : 'Kaucja', 'notes' : 'Notatki' }
+
+
+
+class InvitationsForm(forms.ModelForm):
+    class Meta:
+        model = Invitations
+        fields='__all__'
+        exclude = ('approved',)
+
+        widgets = {
+            'quantity' : forms.TextInput(attrs={'class' : 'form-control'}),
+            'name' : forms.TextInput(attrs={'class' : 'form-control'}),
+            'phone_number' : forms.TextInput(attrs={'class' : 'form-control'}),
+            'email_address' : forms.TextInput(attrs={'class' : 'form-control'}),
+            'price' : forms.TextInput(attrs={'class' : 'form-control'}),
+            'address' : forms.TextInput(attrs={'class' : 'form-control'}),
+            'caution' : forms.TextInput(attrs={'class' : 'form-control'}),
+            'notes' : forms.Textarea(attrs={'class' : 'form-control'}),
+        } 
+
+class PhotographerForm(forms.ModelForm):
+    class Meta:
+        model = Photographer
+        fields='__all__'
+        exclude = ('approved',)
+
+        widgets = {
+            'services' : forms.TextInput(attrs={'class' : 'form-control'}),
+            'name' : forms.TextInput(attrs={'class' : 'form-control'}),
+            'phone_number' : forms.TextInput(attrs={'class' : 'form-control'}),
+            'email_address' : forms.TextInput(attrs={'class' : 'form-control'}),
+            'price' : forms.TextInput(attrs={'class' : 'form-control'}),
+            'address' : forms.TextInput(attrs={'class' : 'form-control'}),
+            'caution' : forms.TextInput(attrs={'class' : 'form-control'}),
+            'notes' : forms.Textarea(attrs={'class' : 'form-control'}),
+        }         
+
+class CeremonyPlaceForm(forms.ModelForm):
+    class Meta:
+        model = CeremonyPlace
+        fields='__all__'
+        exclude = ('approved',)
+
+        widgets = {
+            'guest_capacity' : forms.TextInput(attrs={'class' : 'form-control', 'type':'number'}),
+            'name' : forms.TextInput(attrs={'class' : 'form-control'}),
+            'phone_number' : forms.TextInput(attrs={'class' : 'form-control'}),
+            'email_address' : forms.TextInput(attrs={'class' : 'form-control'}),
+            'price' : forms.TextInput(attrs={'class' : 'form-control', 'type':'number'}),
+            'address' : forms.TextInput(attrs={'class' : 'form-control'}),
+            'caution' : forms.TextInput(attrs={'class' : 'form-control'}),
+            'notes' : forms.Textarea(attrs={'class' : 'form-control'}),
+        } 
