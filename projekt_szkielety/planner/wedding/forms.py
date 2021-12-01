@@ -1,23 +1,49 @@
 from django import forms
 from django.db.models import fields
 from .models import CeremonyPlace, Invitations, Photographer, StandardInfo, Music
-
+from crispy_forms.helper import FormHelper
 
 class StandardForm(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super(StandardForm, self).__init__(*args, **kwargs)
+        ##Here make some changes such as:
+        self.helper = FormHelper()
+        self.helper.form_method = 'POST'
+        ##Many settings here which **i don't want to rewrite in 10 child classes**
+
     class Meta:
         model=StandardInfo
         fields='__all__'
         exclude = ('approved',)
 
-        def save(self, *args, **kwargs):
-            #Calling the parent model form save method
-            print("\n\n ********* Standard FORM ***********")
-            print(f'ARGS: {args}')
-            print(f'KWARGS: {kwargs}')
-            print("********************************\n\n")
-            super(StandardForm, self).save(*args, **kwargs)
+        # def save(self, *args, **kwargs):
+        #     #Calling the parent model form save method
+        #     print("\n\n ********* Standard FORM ***********")
+        #     print(f'ARGS: {args}')
+        #     print(f'KWARGS: {kwargs}')
+        #     print("********************************\n\n")
+        #     super(StandardForm, self).save(*args, **kwargs)
+        widgets = {
+            # 'type' : forms.TextInput(attrs={'class' : 'form-control', 'placeholder': 'Typ'}),
+            'name' : forms.TextInput(attrs={'class' : 'form-control',  'placeholder': 'Nazwa'}),
+            'phone_number' : forms.TextInput(attrs={'class' : 'form-control',  'placeholder': 'Nr Telefonu'}),
+            'email_address' : forms.TextInput(attrs={'class' : 'form-control',  'placeholder': 'Email'}),
+            'price' : forms.TextInput(attrs={'class' : 'form-control',  'placeholder': 'Price'}),
+            'address' : forms.TextInput(attrs={'class' : 'form-control',  'placeholder': 'Adres'}),
+            'caution' : forms.TextInput(attrs={'class' : 'form-control',  'placeholder': 'Kaucja'}),
+            'notes' : forms.Textarea(attrs={'class' : 'form-control',  'placeholder': 'Notatki'}),
+        } 
+        labels = {'type' : 'Typ', 'name' : 'Nazwa', 'phone_number' : 'Nr telefonu',
+         'email_address' : 'Adres email' ,'price' : 'Cena' ,'address' : 'Adres' ,'caution' : 'Kaucja', 'notes' : 'Notatki' }
+
+
 
 class MusicForm(StandardForm):
+
+    def __init__(self, *args, **kwargs):
+        super(MusicForm, self).__init__(*args,**kwargs)
+
     class Meta:
         model = Music
         fields='__all__'
