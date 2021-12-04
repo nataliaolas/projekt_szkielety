@@ -9,7 +9,7 @@ TODO
   * dodać przycisk pod tabelką, żeby można było dodawać nowych fotografów,
   * wyświetlanie przycisku szczegóły
 * Sala weselna:
-  * nie działa przycisk dodania sal weselnych, ale ładnie się wyświetla, że nie ma i żeby dodać sale
+  * nie działa przycisk dodania sal weselnych, ale ładnie się wyświetla, że nie ma i żeby dodać sale pod tabelką albo nad powinno być 
 * Dokumenty:
   * musimy nad tym jeszcze pomyśleć jak to ma wyglądać dokładnie, na razie nic tam nie ma
 * Muzyka:
@@ -27,4 +27,4 @@ TODO
   * nie działa przycisk z panelu głównego
 * Zaproszenia:
   * nie działa przycisk dodania formularza.
-
+- nie wiem czy cos jeszcze
