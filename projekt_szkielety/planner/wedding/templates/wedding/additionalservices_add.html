@@ -3,13 +3,10 @@
 
 <div class="card" style="width: 24rem; background-color: pink; position: relative; left: 40%; right: 60%;" >
     <div class="card-body">
-      <h5 class="card-title">Dodaj Zaproszenia</h5>
-      <p class="card-text">
-        <div class = "form-group">
-            <form action="{% url 'invitations-add' %}" method="post">
+      <h5 class="card-title">Dodaj Dodatkowe Usługi</h5>
                 {% csrf_token %}
-                {{form.quantity.label}}
-                {{form.quantity}}
+                {{form.importance.label}}
+                {{form.importance}}
                 {{form.name.label}}
                 {{form.name}}
                 {{form.phone_number.label}}
