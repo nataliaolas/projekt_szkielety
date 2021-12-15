@@ -8,7 +8,7 @@ from .models import AdditionalServices, Photographer, WeddingHall
 
 from wedding.models import Music,Invitations,CeremonyPlace,Photographer
 
-from .forms import CeremonyPlaceForm, InvitationsForm, MusicForm, PhotographerForm
+from .forms import AdditionalServicesForm, CeremonyPlaceForm, InvitationsForm, MusicForm, PhotographerForm
 
 
 class MainCardsView(TemplateView):
@@ -73,6 +73,11 @@ class AddCeremonyPlaceView(CreateView):
     model = CeremonyPlace
     form_class = CeremonyPlaceForm
     template_name = 'wedding/ceremony_place_add.html'
+
+class AddAdditionalServicesView(CreateView):
+    model = AdditionalServices
+    form_class = AdditionalServicesForm
+    template_name = 'wedding/additionalservices_add.html'
 
 
   
