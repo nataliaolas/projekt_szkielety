@@ -26,5 +26,7 @@ urlpatterns = [
     path('ceremony_place_add', views.AddCeremonyPlaceView.as_view(), name='ceremony_place-add'),
     path('photographer_add', views.AddPhotographerView.as_view(), name='photographer-add'),
     path('additional_services_add', views.AddAdditionalServicesView.as_view(), name='additional_services-add'),
+    path('wedding_hall_add', views.AddWeddingHallView.as_view(), name='wedding_hall-add'), 
+    path('guest_add', views.AddGuestView.as_view(), name='guest-add'), 
 ]
 

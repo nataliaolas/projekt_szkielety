@@ -2,13 +2,13 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
 from django.views.generic import CreateView, TemplateView, ListView
-from .models import AdditionalServices, Photographer, WeddingHall
+from .models import AdditionalServices, Guest, Photographer, WeddingHall
 # from django.views.generic.base import TemplateView, ListView
 # Create your views here.
 
 from wedding.models import Music,Invitations,CeremonyPlace,Photographer
 
-from .forms import AdditionalServicesForm, CeremonyPlaceForm, InvitationsForm, MusicForm, PhotographerForm
+from .forms import AdditionalServicesForm, CeremonyPlaceForm, GuestForm, InvitationsForm, MusicForm, PhotographerForm, WeddingHallForm
 
 
 class MainCardsView(TemplateView):
@@ -78,6 +78,19 @@ class AddAdditionalServicesView(CreateView):
     model = AdditionalServices
     form_class = AdditionalServicesForm
     template_name = 'wedding/additionalservices_add.html'
+
+class AddWeddingHallView(CreateView):
+    model = WeddingHall
+    form_class = WeddingHallForm
+    template_name = 'wedding/wedding_hall_add.html'    
+
+class AddGuestView(CreateView):
+    model = Guest
+    form_class = GuestForm
+    template_name = 'wedding/guest_add.html'    
+
+
+      
 
 
   
