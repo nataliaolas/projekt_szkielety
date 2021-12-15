@@ -10,7 +10,7 @@ class StandardInfo(models.Model):
     address = models.CharField(max_length = 100)
     caution = models.DecimalField(max_digits=5, decimal_places=2)
     approved = models.BooleanField()
-    notes = models.TextField()
+    notes = models.TextField(null=True)
 
     class Meta:
         abstract = True
