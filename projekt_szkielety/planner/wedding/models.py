@@ -5,12 +5,12 @@ from django.urls import reverse
 class StandardInfo(models.Model):
     name = models.CharField(max_length=100)
     phone_number = models.CharField(max_length=9)
-    email_address = models.CharField(max_length=30)
+    email_address = models.CharField(max_length=30, null=True,blank=True)
     price = models.DecimalField(max_digits=8,decimal_places=2)
-    address = models.CharField(max_length = 100)
-    caution = models.DecimalField(max_digits=5, decimal_places=2)
+    address = models.CharField(max_length = 100, null=True,blank=True)
+    caution = models.DecimalField(max_digits=8, decimal_places=2)
     approved = models.BooleanField()
-    notes = models.TextField(null=True)
+    notes = models.TextField(null=True,blank=True)
 
     class Meta:
         abstract = True
@@ -46,7 +46,7 @@ class CeremonyPlace(StandardInfo):
 
 
 class AdditionalServices(StandardInfo):
-    importance = models.IntegerField(max_length = 10)
+    importance = models.IntegerField(max_length = 10,null=True, blank=True)
     def get_absolute_url(self):
         return reverse('additional-service-detail', kwargs={'pk' : self.pk})
 
@@ -71,10 +71,10 @@ class Guest(models.Model):
     diet_type = models.CharField(max_length = 2, choices = DIET_TYPES)
     first_name = models.CharField(max_length = 30)
     last_name  = models.CharField(max_length = 30)
-    phone_number = models.CharField(max_length = 9)
-    email_address = models.CharField(max_length = 50)
+    phone_number = models.CharField(max_length = 9,null=True,blank=True)
+    email_address = models.CharField(max_length = 50, null=True,blank=True)
     accomodation = models.BooleanField()
-    age = models.IntegerField(max_length = 3)
+    age = models.IntegerField(max_length = 3, null=True,blank=True)
     invited = models.BooleanField(default = False)
     attendance = models.BooleanField(default = False)
     def get_absolute_url(self):
