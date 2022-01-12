@@ -71,7 +71,9 @@ class MusicForm(forms.ModelForm):
             print("********************************\n\n")
             super(MusicForm, self).save(*args, **kwargs)
 
-
+        def __init__(self, *args, **kwargs):
+            print("ELO KONSTRUKTOR")
+            super(MusicForm, self).__init__(*args, **kwargs)
 
 
 
