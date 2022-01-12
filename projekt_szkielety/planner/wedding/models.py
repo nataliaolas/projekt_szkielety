@@ -7,10 +7,10 @@ class StandardInfo(models.Model):
     phone_number = models.CharField(max_length=9)
     email_address = models.CharField(max_length=30, null=True,blank=True)
     price = models.DecimalField(max_digits=8,decimal_places=2)
-    address = models.CharField(max_length = 100)
+    address = models.CharField(max_length = 100, null=True,blank=True)
     caution = models.DecimalField(max_digits=8, decimal_places=2)
     approved = models.BooleanField()
-    notes = models.TextField(null=True)
+    notes = models.TextField(null=True,blank=True)
 
     class Meta:
         abstract = True
@@ -46,7 +46,7 @@ class CeremonyPlace(StandardInfo):
 
 
 class AdditionalServices(StandardInfo):
-    importance = models.IntegerField(max_length = 10)
+    importance = models.IntegerField(max_length = 10,null=True, blank=True)
     def get_absolute_url(self):
         return reverse('additional-service-detail', kwargs={'pk' : self.pk})
 
