@@ -8,7 +8,7 @@ class StandardInfo(models.Model):
     email_address = models.CharField(max_length=30, null=True,blank=True)
     price = models.DecimalField(max_digits=8,decimal_places=2)
     address = models.CharField(max_length = 100)
-    caution = models.DecimalField(max_digits=5, decimal_places=2)
+    caution = models.DecimalField(max_digits=8, decimal_places=2)
     approved = models.BooleanField()
     notes = models.TextField(null=True)
 
