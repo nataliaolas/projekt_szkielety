@@ -5,7 +5,7 @@ from django.urls import reverse
 
 class StandardInfo(models.Model):
     name = models.CharField(max_length=100)
-    phone_number = models.CharField(max_length=9,null=True,blank=True
+    phone_number = models.CharField(max_length=9,null=True,blank=True)
     email_address = models.CharField(max_length=30, null=True,blank=True)
     price = models.DecimalField(max_digits=8,decimal_places=2)
     address = models.CharField(max_length = 100, null=True,blank=True)
@@ -18,7 +18,7 @@ class StandardInfo(models.Model):
 
 
 class Music(StandardInfo):
-    type = models.CharField(max_length=20,null=True,blank=True
+    type = models.CharField(max_length=20,null=True,blank=True)
 
     def get_absolute_url(self):
         return reverse('music-detail', kwargs={'pk' : self.pk})
