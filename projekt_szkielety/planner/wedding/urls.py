@@ -17,7 +17,7 @@ urlpatterns = [
     path('invitation/<int:pk>', views.InvitationListView.as_view(), name='invitation-detail'),
     path('photographer/<int:pk>', views.PhotographerListView.as_view(), name='photographer-detail'),
     path('ceremeony_place/<int:pk>', views.CeremonyPlaceListView.as_view(), name='ceremeony_place-detail'),
-    path('additional_service/<int:pk>', views.AdditionalListView.as_view(), name='additional_service-detail'),
+    path('additional_service/<int:pk>', views.AdditionalServicesListView.as_view(), name='additional_service-detail'),
     path('wedding_hall/<int:pk>', views.WeddingHallListView.as_view(), name='wedding_hall-detail'),
 
     #CREATE VIEWS
