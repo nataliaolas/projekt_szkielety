@@ -13,12 +13,12 @@ urlpatterns = [
     path('additional_services', views.AdditionalServicesListView.as_view(), name='additional_services_list'),
     path('wedding_halls', views.WeddingHallListView.as_view(), name='wedding_halls_list'),
     #Detail VIEWS
-    path('music/<int:pk>', views.PhotographerListView.as_view(), name='music-detail'),
-    path('invitation/<int:pk>', views.PhotographerListView.as_view(), name='invitation-detail'),
+    path('music/<int:pk>', views.MusicListView.as_view(), name='music-detail'),
+    path('invitation/<int:pk>', views.InvitationListView.as_view(), name='invitation-detail'),
     path('photographer/<int:pk>', views.PhotographerListView.as_view(), name='photographer-detail'),
-    path('ceremeony_place/<int:pk>', views.PhotographerListView.as_view(), name='ceremeony_place-detail'),
-    path('additional_service/<int:pk>', views.PhotographerListView.as_view(), name='additional_service-detail'),
-    path('wedding_hall/<int:pk>', views.PhotographerListView.as_view(), name='wedding_hall-detail'),
+    path('ceremeony_place/<int:pk>', views.CeremonyPlaceListView.as_view(), name='ceremeony_place-detail'),
+    path('additional_service/<int:pk>', views.AdditionalListView.as_view(), name='additional_service-detail'),
+    path('wedding_hall/<int:pk>', views.WeddingHallListView.as_view(), name='wedding_hall-detail'),
 
     #CREATE VIEWS
     path('music_add', views.AddMusicView.as_view(), name='music-add'),
