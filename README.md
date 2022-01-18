@@ -1,10 +1,9 @@
 # projekt_szkielety
 Projekt na przedmiot szkielety tworzenia aplikacji 
 TODO
-* poprawić wygląd strony głównej - NATALKA
 * kalendarz wygląd, obsługa - NATALKA
-* logowanie - obsługa tego wszystkiego - NATALKA
-* rejestracja - obsługa tego wszystkiego - NATALKA
+* logowanie - obsługa tego wszystkiego - michal
+* rejestracja - obsługa tego wszystkiego - michal
 * Fotograf :
   * dodać przycisk pod tabelką, żeby można było dodawać nowych fotografów,
   * wyświetlanie przycisku szczegóły
