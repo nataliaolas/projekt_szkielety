@@ -8,7 +8,7 @@
   {% else %}
   <div style="text-align:center">
   <h5>Nie dodałeś jeszcze żadnych dodatkowych usług</h5>
-  <button type="submit" class="btn btn-dark"> Dodaj dodatkowe usługi</button>
+  <button type="submit" class="btn btn-dark"><a href={% url 'additional_services-add' %} > Dodaj dodatkowe usługi </a> </button>
   </div>
   {% endif %}
 {% endblock %}

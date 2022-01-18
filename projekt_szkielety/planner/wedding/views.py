@@ -33,6 +33,8 @@ class AdditionalServicesListView(ListView):
 class WeddingHallListView(ListView):
     model = WeddingHall
 
+class InvitationListView(ListView):
+    model = Invitations
 
 
 
