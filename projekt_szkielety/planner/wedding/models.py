@@ -11,7 +11,8 @@ class StandardInfo(models.Model):
     caution = models.DecimalField(max_digits=8, decimal_places=2)
     approved = models.BooleanField()
     notes = models.TextField(null=True,blank=True)
-
+    def get_absolute_url(self):
+        return reverse('ceremony-place-detail', kwargs={'pk' : self.pk})
     class Meta:
         abstract = True
 
@@ -85,16 +86,24 @@ class Timetable(models.Model):
     name = models.TextField(max_length = 50)
     time = models.DateField()
     done = models.BooleanField(default = False)
+    def get_absolute_url(self):
+        return reverse('timetable-detail', kwargs={'pk' : self.pk})
 
 class Documents(models.Model):
     name = models.CharField(max_length = 50)
+    def get_absolute_url(self):
+        return reverse('documents-detail', kwargs={'pk' : self.pk})
 
 class Budget(models.Model):
     total = models.DecimalField(max_digits=8,decimal_places=2)
     spent = models.DecimalField(max_digits=8,decimal_places=2)
     remaining_amount = models.DecimalField(max_digits=8,decimal_places=2)
+    def get_absolute_url(self):
+        return reverse('budget-detail', kwargs={'pk' : self.pk})
 
 class Callendar(models.Model):
     date = models.DateField()
     notes = models.TextField()
+    def get_absolute_url(self):
+        return reverse('calendar-detail', kwargs={'pk' : self.pk})
     
