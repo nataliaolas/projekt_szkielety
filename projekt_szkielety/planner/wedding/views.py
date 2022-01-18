@@ -1,14 +1,14 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import redirect, render
+from django.http import HttpResponse, response
 from django.template import loader
-from django.views.generic import CreateView, TemplateView, ListView
-from .models import AdditionalServices, Photographer, WeddingHall
+from django.views.generic import CreateView, TemplateView, ListView, FormView
+from .models import AdditionalServices, Guest, Photographer, WeddingHall
 # from django.views.generic.base import TemplateView, ListView
 # Create your views here.
 
 from wedding.models import Music,Invitations,CeremonyPlace,Photographer
 
-from .forms import AdditionalServicesForm, CeremonyPlaceForm, InvitationsForm, MusicForm, PhotographerForm
+from .forms import AdditionalServicesForm, CeremonyPlaceForm, GuestForm, InvitationsForm, MusicForm, PhotographerForm, WeddingHallForm
 
 
 class MainCardsView(TemplateView):
@@ -52,11 +52,26 @@ class AddMusicView(CreateView):
     form_class = MusicForm
     template_name = 'wedding/music_add.html'
 
-    def form_invalid(self, form):
-        print("\nFORM INVALID!!\n")
-        print(f"\n SELF: {self}!!\n")
-        print(f"\n Form: {form}!!\n")
-        return super().form_invalid(form)
+    def post(self, request):
+        form = MusicForm(self.request.POST)
+        print("\n\n\n ******************************** \n\n\n")
+        print(form)
+        print("\n\n\n ******************************** \n\n\n")
+        print("\n\n\n ******************************** \n\n\n")
+        print(form.data)
+        print("\n\n\n ******************************** \n\n\n")
+        if form.is_valid():
+            form.save()
+            print("ELOELO430")
+        else:
+            print("\n\n\n ******************************** \n\n\n")
+            print(form.errors)
+            print("\n\n\n ******************************** \n\n\n")
+            print("FORMA JEST INWALIDA")
+        return redirect('/music')
+
+       
+
 
 class AddInvitationsView(CreateView):
     model = Invitations
@@ -78,6 +93,19 @@ class AddAdditionalServicesView(CreateView):
     model = AdditionalServices
     form_class = AdditionalServicesForm
     template_name = 'wedding/additionalservices_add.html'
+
+class AddWeddingHallView(CreateView):
+    model = WeddingHall
+    form_class = WeddingHallForm
+    template_name = 'wedding/wedding_hall_add.html'    
+
+class AddGuestView(CreateView):
+    model = Guest
+    form_class = GuestForm
+    template_name = 'wedding/guest_add.html'    
+
+
+      
 
 
   

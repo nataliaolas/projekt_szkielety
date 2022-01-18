@@ -3,13 +3,10 @@
 
 <div class="card" style="width: 24rem; background-color: pink; position: relative; left: 40%; right: 60%;" >
     <div class="card-body">
-      <h5 class="card-title">Dodaj Muzykę</h5>
-      <p class="card-text">
-        <div class ="form-group">
-            <form method="post">
+      <h5 class="card-title">Dodaj Salę Weselną</h5>
                 {% csrf_token %}
-                {{form.type.label}}
-                {{form.type}}
+                {{form.accomodation.label}}
+                {{form.accomodation}}
                 {{form.name.label}}
                 {{form.name}}
                 {{form.phone_number.label}}
@@ -23,7 +20,7 @@
                 {{form.caution.label}}
                 {{form.caution}}             
                 {{form.notes.label}}
-                {{form.notes}}
+                {{form.notes}}  
                 <br>           
                 <button type="submit" class="btn btn-dark">Dodaj</button>
             </form>
