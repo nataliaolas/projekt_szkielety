@@ -7,12 +7,11 @@ class StandardInfo(models.Model):
     phone_number = models.CharField(max_length=9)
     email_address = models.CharField(max_length=30, null=True,blank=True)
     price = models.DecimalField(max_digits=8,decimal_places=2)
-    address = models.CharField(max_length = 100, null=True,blank=True)
-    caution = models.DecimalField(max_digits=8, decimal_places=2)
-    approved = models.BooleanField()
-    notes = models.TextField(null=True,blank=True)
-    def get_absolute_url(self):
-        return reverse('ceremony-place-detail', kwargs={'pk' : self.pk})
+    address = models.CharField(max_length = 100,null=True, blank=True)
+    caution = models.DecimalField(max_digits=5, decimal_places=2)
+    approved = models.BooleanField(blank = True, null=True)
+    notes = models.TextField(blank=True, null=True)
+
     class Meta:
         abstract = True
 
@@ -22,13 +21,6 @@ class Music(StandardInfo):
 
     def get_absolute_url(self):
         return reverse('music-detail', kwargs={'pk' : self.pk})
-
-    def save(self, *args, **kwargs):
-        print("\n\n********************************")
-        print(f'ARGS: {args}')
-        print(f'KWARGS: {kwargs}')
-        print("********************************\n\n")
-        super(Music, self).save(*args, **kwargs)
 
 class Invitations(StandardInfo):
     quantity = models.PositiveIntegerField()
