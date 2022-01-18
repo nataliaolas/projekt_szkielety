@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 from django.http import HttpResponse, response
 from django.template import loader
-from django.views.generic import CreateView, TemplateView, ListView
+from django.views.generic import CreateView, TemplateView, ListView, FormView
 from .models import AdditionalServices, Guest, Photographer, WeddingHall
 # from django.views.generic.base import TemplateView, ListView
 # Create your views here.
@@ -53,24 +53,21 @@ class AddMusicView(CreateView):
     template_name = 'wedding/music_add.html'
 
     def post(self, request):
-        form = MusicForm(request.POST)
-        print(request.POST)
-        form = MusicForm()
-        data = request.POST
-        form.type = data['type']
-        form.name = data['name']
-        form.phone_number = data['phone_number']
-        form.price = data['price']
-        form.address = data['address']
-        form.caution = data['caution']
-        form.notes = data['notes']
-        
+        form = MusicForm(self.request.POST)
+        print("\n\n\n ******************************** \n\n\n")
+        print(form)
+        print("\n\n\n ******************************** \n\n\n")
+        print("\n\n\n ******************************** \n\n\n")
+        print(form.data)
+        print("\n\n\n ******************************** \n\n\n")
         if form.is_valid():
             form.save()
             print("ELOELO430")
         else:
+            print("\n\n\n ******************************** \n\n\n")
+            print(form.errors)
+            print("\n\n\n ******************************** \n\n\n")
             print("FORMA JEST INWALIDA")
-            print(form)
         return redirect('/music')
 
        

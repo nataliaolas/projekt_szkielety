@@ -53,27 +53,15 @@ class MusicForm(forms.ModelForm):
         widgets = {
             'type' : forms.TextInput(attrs={'class' : 'form-control', 'placeholder': 'Typ'}),
             'name' : forms.TextInput(attrs={'class' : 'form-control',  'placeholder': 'Nazwa'}),
-            'phone_number' : forms.TextInput(attrs={'class' : 'form-control',  'placeholder': 'Nr Telefonu'}),
+            'phone_number' : forms.NumberInput(attrs={'class' : 'form-control',  'placeholder': 'Nr Telefonu'}),
             'email_address' : forms.TextInput(attrs={'class' : 'form-control',  'placeholder': 'Email'}),
-            'price' : forms.TextInput(attrs={'class' : 'form-control',  'placeholder': 'Cena'}),
+            'price' : forms.NumberInput(attrs={'class' : 'form-control',  'placeholder': 'Cena'}),
             'address' : forms.TextInput(attrs={'class' : 'form-control',  'placeholder': 'Adres'}),
-            'caution' : forms.TextInput(attrs={'class' : 'form-control',  'placeholder': 'Kaucja'}),
+            'caution' : forms.NumberInput(attrs={'class' : 'form-control',  'placeholder': 'Kaucja'}),
             'notes' : forms.Textarea(attrs={'class' : 'form-control',  'placeholder': 'Notatki'}),
         } 
         labels = {'type' : 'Typ', 'name' : 'Nazwa', 'phone_number' : 'Nr telefonu',
          'email_address' : 'Adres email' ,'price' : 'Cena' ,'address' : 'Adres' ,'caution' : 'Kaucja', 'notes' : 'Notatki' }
-
-        def save(self, *args, **kwargs):
-            #Calling the parent model form save method
-            print("\n\n ********* MUSIC FORM ***********")
-            print(f'ARGS: {args}')
-            print(f'KWARGS: {kwargs}')
-            print("********************************\n\n")
-            super(MusicForm, self).save(*args, **kwargs)
-
-        def __init__(self, *args, **kwargs):
-            print("ELO KONSTRUKTOR")
-            super(MusicForm, self).__init__(*args, **kwargs)
 
 
 
