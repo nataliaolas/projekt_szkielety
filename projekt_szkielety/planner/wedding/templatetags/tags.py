@@ -22,6 +22,26 @@ def get_table(queryset):
     return {'items' : items, 'columns' : columns, 'add_url':add_url}
 
 
+@register.inclusion_tag('wedding/detail.html')
+def get_details(object):
+    item = object
+    keys = [k for k,v in item.__dict__.items() if k != '_state' and k != 'id']
+    values = [v for k,v in item.__dict__.items() if k != '_state' and k != 'id']
+    object_list = zip(keys,values)
+    print("*******************")
+    print(keys)
+    print("*******************")
+    print("*******************")
+    print(values)
+    print("*******************")
+    print("*******************")
+    print(object_list)
+    print("*******************")
+    update_url = item.get_update_url()
+    return { 'object_list': object_list, 'update_url': update_url}
+
+
+
 @register.simple_tag(name='get_attribute_for_object')
 def get_attribute_for_object(obj, attribute_name, *args):
     attribute = getattr(obj, attribute_name)

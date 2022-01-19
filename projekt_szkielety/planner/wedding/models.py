@@ -25,6 +25,9 @@ class Music(StandardInfo):
     def get_add_url(self):
         return reverse('music-add')
 
+    def get_update_url(self):
+        return reverse('music-update', kwargs={'pk' : self.pk})
+
 
 class Invitations(StandardInfo):
     quantity = models.PositiveIntegerField()

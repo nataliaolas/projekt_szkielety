@@ -1,0 +1,29 @@
+{% load static %}
+{% load tags %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'wedding/details.css' %}">
+<div class="card" style="width: 24rem; background-color: pink; position: relative; left: 40%; right: 60%;" >
+    <div class="card-body">
+      <h5 class="card-title">ELOELO</h5>
+      <p class="card-text">
+        <div>
+            <h2>TUTAJ TRZEBA WSTAWIC JAKIES HTMLE I OSTYLOWAC??</h2>
+            <div class="right">
+                <a href={{update_url}} class="btn btn-dark">Edytuj</a>
+            </div>
+            {% for key,value in object_list %}
+            <p>{{key}}</p>
+            <p>{{value}}</p>
+            <h2>CO TAm</h2>
+            {% endfor %}
+            {% comment %} {% for key,value in zip(keys,values) %}
+            <p>{{key}}</p>
+            <p>{{value}}</p>
+            
+            {% endfor %} {% endcomment %}
+            </div>
+        </p>
+    </div>
+  </div>
+
+{% endblock %} 

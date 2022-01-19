@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 from django.http import HttpResponse, response
 from django.template import loader
-from django.views.generic import CreateView, TemplateView, ListView, FormView
+from django.views.generic import CreateView, TemplateView, ListView, DetailView, UpdateView
 from .models import AdditionalServices, Guest, Photographer, WeddingHall
 # from django.views.generic.base import TemplateView, ListView
 # Create your views here.
@@ -139,11 +139,78 @@ class AddGuestView(CreateView):
     template_name = 'wedding/guest_add.html'    
 
 
+class MusicDetailView(DetailView):
+    model=Music
       
 
+class PhotographerDetailView(DetailView):
+    model=Photographer
+
+
+class InvitationsDetailView(DetailView):
+    model=Invitations
+
+
+class CeremonyPlaceDetailView(DetailView):
+    model=CeremonyPlace
+
+class GuestDetailView(DetailView):
+    model=Guest
+
+class AdditionalServicesDetailView(DetailView):
+    model=AdditionalServices
+
+
+class WeddingHallDetailView(DetailView):
+    model=WeddingHall
+  
+
+class MusicUpdateView(UpdateView):
+    model=Music
+    form_class = MusicForm
+    template_name = 'wedding/music_add.html'
+
+    def get_success_url(self):
+        return redirect('music-detail', args=(self.object.id,))
+
+class PhotographerUpdateView(UpdateView):
+    model=Photographer
+    form_class = PhotographerForm
+    template_name = 'wedding/photographer_add.html'
+
+class InvitationsUpdateView(UpdateView):
+    model=Invitations
+    form_class = InvitationsForm
+    template_name = 'wedding/invitations_add.html'
+
+
+class CeremonyPlaceUpdateView(UpdateView):
+    model=CeremonyPlace
+    form_class = CeremonyPlaceForm
+    template_name = 'wedding/ceremony_place_add.html'
+
+class GuestUpdateView(UpdateView):
+    model=Guest
+    form_class = GuestForm
+    template_name = 'wedding/guest_add.html'
+
+class AdditionalServicesUpdateView(UpdateView):
+    model=AdditionalServices
+    form_class = AdditionalServicesForm
+    template_name = 'wedding/additionalservices_add.html'
+
+
+class WeddingHallUpdateView(UpdateView):
+    model=WeddingHall
+    form_class = WeddingHallForm
+    template_name = 'wedding/weddinghall_add.html'
+
 
   
-  
+
+
+
+
 
 
     
