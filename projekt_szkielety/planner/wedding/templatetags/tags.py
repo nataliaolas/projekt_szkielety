@@ -18,7 +18,8 @@ def get_table(queryset):
     print("*******************")
     print(items)
     print("*******************")
-    return {'items' : items, 'columns' : columns}
+    add_url = item.get_add_url()
+    return {'items' : items, 'columns' : columns, 'add_url':add_url}
 
 
 @register.simple_tag(name='get_attribute_for_object')

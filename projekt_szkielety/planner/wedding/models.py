@@ -8,7 +8,7 @@ class StandardInfo(models.Model):
     email_address = models.CharField(max_length=30, null=True,blank=True)
     price = models.DecimalField(max_digits=8,decimal_places=2)
     address = models.CharField(max_length = 100,null=True, blank=True)
-    caution = models.DecimalField(max_digits=5, decimal_places=2)
+    caution = models.DecimalField(max_digits=8, decimal_places=2)
     approved = models.BooleanField(blank = True, null=True)
     notes = models.TextField(blank=True, null=True)
 
@@ -22,26 +22,44 @@ class Music(StandardInfo):
     def get_absolute_url(self):
         return reverse('music-detail', kwargs={'pk' : self.pk})
 
+    def get_add_url(self):
+        return reverse('music-add')
+
+
 class Invitations(StandardInfo):
     quantity = models.PositiveIntegerField()
+
     def get_absolute_url(self):
         return reverse('invitations-detail', kwargs={'pk' : self.pk})
+
+    def get_add_url(self):
+        return reverse('invitations-add')
+
 
 class Photographer(StandardInfo):
     services = models.TextField()
     def get_absolute_url(self):
         return reverse('photographer-detail', kwargs={'pk' : self.pk})
+    
+    def get_add_url(self):
+        return reverse('photographer-add')
 
 class CeremonyPlace(StandardInfo):
     guest_capacity = models.PositiveIntegerField()
     def get_absolute_url(self):
         return reverse('ceremony-place-detail', kwargs={'pk' : self.pk})
+    
+    def get_add_url(self):
+        return reverse('ceremony_place-add')
 
 
 class AdditionalServices(StandardInfo):
     importance = models.IntegerField(max_length = 10,null=True, blank=True)
     def get_absolute_url(self):
         return reverse('additional-service-detail', kwargs={'pk' : self.pk})
+    
+    def get_add_url(self):
+        return reverse('additional_services-add')
 
 
 class WeddingHall(StandardInfo):
@@ -49,6 +67,9 @@ class WeddingHall(StandardInfo):
     guest_capacity = models.PositiveIntegerField()
     def get_absolute_url(self):
         return reverse('wedding-hall-detail', kwargs={'pk' : self.pk})
+    
+    def get_add_url(self):
+        return reverse('wedding_hall-add')
 
 
 class Guest(models.Model):
@@ -72,6 +93,9 @@ class Guest(models.Model):
     attendance = models.BooleanField(default = False)
     def get_absolute_url(self):
         return reverse('guest-detail', kwargs={'pk' : self.pk})
+    
+    def get_add_url(self):
+        return reverse('guest-add')
 
 
 class Timetable(models.Model):

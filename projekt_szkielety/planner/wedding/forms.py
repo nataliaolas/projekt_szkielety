@@ -3,7 +3,7 @@ from django.db.models import fields
 from .models import AdditionalServices, CeremonyPlace, Invitations, Photographer, StandardInfo, Music, WeddingHall, Guest
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
-
+from django.contrib.auth import authenticate
 
 
 class MusicForm(forms.ModelForm):
@@ -201,8 +201,6 @@ class SignUpForm(forms.Form):
     )
     
 
-
-
     def clean(self):
         cleaned_data = super().clean()
         username = cleaned_data.get("username")
@@ -216,4 +214,27 @@ class SignUpForm(forms.Form):
             if password and password2 and password != password2:
                 self.add_error(None, 'Hasła nie są identyczne')
 
+class LogInForm(forms.Form):
+    username = forms.CharField(min_length=2,
+        max_length=30,
+        widget=forms.TextInput(attrs={'class' : 'form-control',  'placeholder': 'Nazwa uzytkownika'}),
+        label="Podaj nazwę użytkownika",
+        required=True
+    )
+    password = forms.CharField(
+        min_length=6,
+        max_length=100,
+        widget=forms.PasswordInput(attrs={'class' : 'form-control',  'placeholder': 'Haslo'}),
+        label="Podaj Hasło",
+        required=True
+    )
+    
 
+    def clean(self):
+        cleaned_data = super().clean()
+        username = cleaned_data.get("username")
+        password = cleaned_data.get("password")
+        user = authenticate(username=username, password=password)
+        if not user:
+            print("USER IS NOT AUTHENTICATED!!!!")
+            self.add_error(None,"Błędny login lub hasło")

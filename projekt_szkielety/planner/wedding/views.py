@@ -7,8 +7,8 @@ from .models import AdditionalServices, Guest, Photographer, WeddingHall
 # Create your views here.
 from django.contrib.auth.models import User
 from wedding.models import Music,Invitations,CeremonyPlace,Photographer
-
-from .forms import AdditionalServicesForm, CeremonyPlaceForm, GuestForm, InvitationsForm, MusicForm, PhotographerForm, SignUpForm, WeddingHallForm
+from django.contrib.auth import authenticate, login
+from .forms import AdditionalServicesForm, CeremonyPlaceForm, GuestForm, InvitationsForm, LogInForm, MusicForm, PhotographerForm, SignUpForm, WeddingHallForm
 
 
 class MainCardsView(TemplateView):
@@ -61,10 +61,24 @@ def sign_up(request):
     }
     return render(request, 'wedding/register2.html', context)
 
-def login(request):
-    template = loader.get_template('wedding/login.html')
+def customLogin(request):
+    template = loader.get_template('wedding/login2.html')
     context = {'elo':'elo'}
-    return HttpResponse(template.render(context, request))    
+    if request.method == 'POST':
+        form = LogInForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('/')
+    else:
+        form = LogInForm()
+    context = {
+        'form': form
+    }
+    return render(request, 'wedding/login2.html', context)
 
 
 class AddMusicView(CreateView):
