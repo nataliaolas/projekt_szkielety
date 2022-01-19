@@ -1,0 +1,35 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %} Rejestracja {% endblock %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'wedding/register.css' %}">
+{% if created_user %}
+    <p>Stworzono użytkownika {{form.username.value}}</p>
+
+{% else %}
+    {% if request.user.is_authenticated %}
+        <p>Witaj {{request.user.username}}</p>
+    {% else %}
+    <div class="container register-form">
+    <div class="form">
+        <div class="note">
+            <p>Zarejestruj się na wyjątkowej platformie, dzięki której Twój wielki dzień będzie perfekcyjny w każdym calu.</p>
+        </div>
+            <div class="form-content">
+                <form method="post">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="form-group">
+                    {{form.as_p}}
+                    <button type="submit" class="btnSubmit">Zarejestruj się</button>
+                </div>
+            </div>
+                </form>
+            </div>
+    </div>
+    {% endif %}
+{% endif %}
+
+
+{% endblock %}

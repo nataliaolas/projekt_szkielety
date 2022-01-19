@@ -9,7 +9,11 @@
       </div>
 
       <div class="form-content">
+        <form method="post">
+            {% csrf_token %}
           <div class="row">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Adres" value=""/>
               <div class="col-md-6">
                       <input type="text" class="form-control" placeholder="Imię Pani młodej *" value=""/>
                       </div>
@@ -29,6 +33,7 @@
                 <button type="button" class="btnSubmit">Submit</button>
           </div>
       </div>
+    </form>
   </div>
 </div>
 {% endblock %}

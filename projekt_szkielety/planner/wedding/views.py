@@ -5,10 +5,10 @@ from django.views.generic import CreateView, TemplateView, ListView, FormView
 from .models import AdditionalServices, Guest, Photographer, WeddingHall
 # from django.views.generic.base import TemplateView, ListView
 # Create your views here.
-
+from django.contrib.auth.models import User
 from wedding.models import Music,Invitations,CeremonyPlace,Photographer
 
-from .forms import AdditionalServicesForm, CeremonyPlaceForm, GuestForm, InvitationsForm, MusicForm, PhotographerForm, WeddingHallForm
+from .forms import AdditionalServicesForm, CeremonyPlaceForm, GuestForm, InvitationsForm, MusicForm, PhotographerForm, SignUpForm, WeddingHallForm
 
 
 class MainCardsView(TemplateView):
@@ -38,10 +38,28 @@ class InvitationListView(ListView):
 
 
 
-def register(request):
-    template = loader.get_template('wedding/register.html')
-    context = {'elo':'elo'}
-    return HttpResponse(template.render(context, request))
+# def register(request):
+#     template = loader.get_template('wedding/register.html')
+#     context = {'elo':'elo'}
+#     return HttpResponse(template.render(context, request))
+
+def sign_up(request):
+    created_user = False
+
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            User.objects.create_user(username=username, password=password)
+            created_user = True
+    else:
+        form = SignUpForm()
+    context = {
+        'form': form,
+        'created_user': created_user
+    }
+    return render(request, 'wedding/register2.html', context)
 
 def login(request):
     template = loader.get_template('wedding/login.html')
