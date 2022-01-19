@@ -14,6 +14,8 @@ from .forms import AdditionalServicesForm, CeremonyPlaceForm, GuestForm, Invitat
 class MainCardsView(TemplateView):
     template_name = "wedding/main_page.html"
 
+class InProgressView(TemplateView):
+    template_name = "wedding/in_progress.html"
 
 class MusicListView(ListView):
     model = Music
