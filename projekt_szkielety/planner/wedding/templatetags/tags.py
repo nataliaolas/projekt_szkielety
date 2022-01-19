@@ -34,18 +34,17 @@ def get_details(object):
          'importance' : 'Poziom Istotnosci',  'services' : 'Uslugi', 'quantity' : 'Ilosc', 'type' : 'Typ' }
     for idx, key in enumerate(keys):
         if key in labels.keys():
-            print("JEST KEY HALO HALO")
             keys[idx] = labels[key]
     print("*******************")
     print("KEYS")
     print(keys)
-    # print("*******************")
-    # print("*******************")
-    # print(values)
-    # print("*******************")
-    # print("*******************")
-    # print(object_list)
-    # print("*******************")
+    print("*******************")
+    print("VALUES")
+    print(values)
+    print("*******************")
+    print("OBJECT LIST")
+    print(object_list)
+    print("*******************")
     name = item.name
     update_url = item.get_update_url()
     return { 'object_list': object_list, 'update_url': update_url, 'name':name}
