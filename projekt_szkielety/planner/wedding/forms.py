@@ -114,6 +114,7 @@ class WeddingHallForm(forms.ModelForm):
 
         widgets = {
             'accomodation' : forms.CheckboxInput(attrs={'class' : 'form-check'}),
+            'guest_capacity' : forms.TextInput(attrs={'class' : 'form-control', 'type':'number',  'placeholder': 'Ilosc Gosci'}),
             'name' : forms.TextInput(attrs={'class' : 'form-control',  'placeholder': 'Nazwa'}),
             'phone_number' : forms.TextInput(attrs={'class' : 'form-control',  'placeholder': 'Nr Telefonu'}),
             'email_address' : forms.TextInput(attrs={'class' : 'form-control',  'placeholder': 'Email'}),
@@ -122,7 +123,7 @@ class WeddingHallForm(forms.ModelForm):
             'caution' : forms.TextInput(attrs={'class' : 'form-control',  'placeholder': 'Kaucja'}),
             'notes' : forms.Textarea(attrs={'class' : 'form-control',  'placeholder': 'Notatki'}),
         }
-        labels = {'accomodation' : 'Nocleg', 'name' : 'Nazwa', 'phone_number' : 'Nr telefonu',
+        labels = {'accomodation' : 'Nocleg','guest_capacity': 'ilosc gosci', 'name' : 'Nazwa', 'phone_number' : 'Nr telefonu',
          'email_address' : 'Adres email' ,'price' : 'Cena' ,'address' : 'Adres' ,'caution' : 'Kaucja', 'notes' : 'Notatki' } 
 
 

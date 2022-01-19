@@ -13,6 +13,7 @@ def get_columns_names(queryset):
 @register.inclusion_tag('wedding/table.html')
 def get_table(queryset):
     item = queryset.first()
+    
     columns = [k for k,v in item.__dict__.items() if k != '_state' and k != 'id' and k!='email_address']
     items = [item for item in queryset]
     print("*******************")
@@ -28,17 +29,26 @@ def get_details(object):
     keys = [k for k,v in item.__dict__.items() if k != '_state' and k != 'id']
     values = [v for k,v in item.__dict__.items() if k != '_state' and k != 'id']
     object_list = zip(keys,values)
+    labels = {'accomodation' : 'Nocleg','guest_capacity': 'ilosc gosci', 'name' : 'Nazwa', 'phone_number' : 'Nr telefonu',
+         'email_address' : 'Adres email' ,'price' : 'Cena' ,'address' : 'Adres' ,'caution' : 'Kaucja', 'notes' : 'Notatki',
+         'importance' : 'Poziom Istotnosci',  'services' : 'Uslugi', 'quantity' : 'Ilosc', 'type' : 'Typ' }
+    for idx, key in enumerate(keys):
+        if key in labels.keys():
+            print("JEST KEY HALO HALO")
+            keys[idx] = labels[key]
     print("*******************")
+    print("KEYS")
     print(keys)
-    print("*******************")
-    print("*******************")
-    print(values)
-    print("*******************")
-    print("*******************")
-    print(object_list)
-    print("*******************")
+    # print("*******************")
+    # print("*******************")
+    # print(values)
+    # print("*******************")
+    # print("*******************")
+    # print(object_list)
+    # print("*******************")
+    name = item.name
     update_url = item.get_update_url()
-    return { 'object_list': object_list, 'update_url': update_url}
+    return { 'object_list': object_list, 'update_url': update_url, 'name':name}
 
 
 

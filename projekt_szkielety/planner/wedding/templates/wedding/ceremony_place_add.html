@@ -4,6 +4,7 @@
 <div class="card" style="width: 24rem; background-color: pink; position: relative; left: 40%; right: 60%;" >
     <div class="card-body">
       <h5 class="card-title">Dodaj Miejsce Ślubu</h5>
+      <form action="{% url 'ceremony_place-add' %}" method="post">
                 {% csrf_token %}
                 {{form.guest_capacity.label}}
                 {{form.guest_capacity}}

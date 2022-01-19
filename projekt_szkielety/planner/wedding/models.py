@@ -33,13 +33,13 @@ class Invitations(StandardInfo):
     quantity = models.PositiveIntegerField()
 
     def get_absolute_url(self):
-        return reverse('invitations-detail', kwargs={'pk' : self.pk})
+        return reverse('invitation-detail', kwargs={'pk' : self.pk})
 
     def get_add_url(self):
         return reverse('invitations-add')
 
     def get_update_url(self):
-        return reverse('invitations-update', kwargs={'pk' : self.pk})
+        return reverse('invitation-update', kwargs={'pk' : self.pk})
 
 
 class Photographer(StandardInfo):
@@ -56,7 +56,7 @@ class Photographer(StandardInfo):
 class CeremonyPlace(StandardInfo):
     guest_capacity = models.PositiveIntegerField()
     def get_absolute_url(self):
-        return reverse('ceremony-place-detail', kwargs={'pk' : self.pk})
+        return reverse('ceremony_place-detail', kwargs={'pk' : self.pk})
     
     def get_add_url(self):
         return reverse('ceremony_place-add')
@@ -68,20 +68,20 @@ class CeremonyPlace(StandardInfo):
 class AdditionalServices(StandardInfo):
     importance = models.IntegerField(max_length = 10,null=True, blank=True)
     def get_absolute_url(self):
-        return reverse('additional-service-detail', kwargs={'pk' : self.pk})
+        return reverse('additional_service-detail', kwargs={'pk' : self.pk})
     
     def get_add_url(self):
         return reverse('additional_services-add')
     
     def get_update_url(self):
-        return reverse('additional_services-update', kwargs={'pk' : self.pk})
+        return reverse('additional_service-update', kwargs={'pk' : self.pk})
 
 
 class WeddingHall(StandardInfo):
-    accomodation = models.BooleanField()
-    guest_capacity = models.PositiveIntegerField()
+    accomodation = models.BooleanField(blank=True, null=True)
+    guest_capacity = models.PositiveIntegerField(blank=True, null=True)
     def get_absolute_url(self):
-        return reverse('wedding-hall-detail', kwargs={'pk' : self.pk})
+        return reverse('wedding_hall-detail', kwargs={'pk' : self.pk})
     
     def get_add_url(self):
         return reverse('wedding_hall-add')

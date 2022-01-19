@@ -20,7 +20,7 @@ urlpatterns = [
     path('music/<int:pk>', views.MusicDetailView.as_view(), name='music-detail'),
     path('invitation/<int:pk>', views.InvitationsDetailView.as_view(), name='invitation-detail'),
     path('photographer/<int:pk>', views.PhotographerDetailView.as_view(), name='photographer-detail'),
-    path('ceremeony_place/<int:pk>', views.CeremonyPlaceDetailView.as_view(), name='ceremeony_place-detail'),
+    path('ceremeony_place/<int:pk>', views.CeremonyPlaceDetailView.as_view(), name='ceremony_place-detail'),
     path('additional_service/<int:pk>', views.AdditionalServicesDetailView.as_view(), name='additional_service-detail'),
     path('wedding_hall/<int:pk>', views.WeddingHallDetailView.as_view(), name='wedding_hall-detail'),
 
@@ -37,7 +37,7 @@ urlpatterns = [
     path('music/update/<int:pk>', views.MusicUpdateView.as_view(), name='music-update'),
     path('invitation/update/<int:pk>', views.InvitationsUpdateView.as_view(), name='invitation-update'),
     path('photographer/update/<int:pk>', views.PhotographerUpdateView.as_view(), name='photographer-update'),
-    path('ceremeony_place/update/<int:pk>', views.CeremonyPlaceUpdateView.as_view(), name='ceremeony_place-update'),
+    path('ceremeony_place/update/<int:pk>', views.CeremonyPlaceUpdateView.as_view(), name='ceremony_place-update'),
     path('additional_service/update/<int:pk>', views.AdditionalServicesUpdateView.as_view(), name='additional_service-update'),
     path('wedding_hall/update/<int:pk>', views.WeddingHallUpdateView.as_view(), name='wedding_hall-update'),
 ]

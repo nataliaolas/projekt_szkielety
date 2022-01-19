@@ -38,11 +38,6 @@ class InvitationListView(ListView):
 
 
 
-# def register(request):
-#     template = loader.get_template('wedding/register.html')
-#     context = {'elo':'elo'}
-#     return HttpResponse(template.render(context, request))
-
 def sign_up(request):
     created_user = False
 
@@ -112,26 +107,122 @@ class AddInvitationsView(CreateView):
     form_class = InvitationsForm
     template_name = 'wedding/invitations_add.html'
 
+    def post(self, request):
+        form = InvitationsForm(self.request.POST)
+        print("\n\n\n ******************************** \n\n\n")
+        print(form)
+        print("\n\n\n ******************************** \n\n\n")
+        print("\n\n\n ******************************** \n\n\n")
+        print(form.data)
+        print("\n\n\n ******************************** \n\n\n")
+        if form.is_valid():
+            form.save()
+            print("ELOELO430")
+        else:
+            print("\n\n\n ******************************** \n\n\n")
+            print(InvitationsForm.errors)
+            print("\n\n\n ******************************** \n\n\n")
+            print("FORMA JEST INWALIDA")
+        return redirect('/invitations')
+
+    def get_success_url(self):
+        return redirect('/invitations')
+
 
 class AddPhotographerView(CreateView):
     model = Photographer
     form_class = PhotographerForm
-    template_name = 'wedding/photographer_add.html'    
+    template_name = 'wedding/photographer_add.html'
+
+    def post(self, request):
+        form = PhotographerForm(self.request.POST)
+        print("\n\n\n ******************************** \n\n\n")
+        print(form)
+        print("\n\n\n ******************************** \n\n\n")
+        print("\n\n\n ******************************** \n\n\n")
+        print(form.data)
+        print("\n\n\n ******************************** \n\n\n")
+        if form.is_valid():
+            form.save()
+            print("ELOELO430")
+        else:
+            print("\n\n\n ******************************** \n\n\n")
+            print(PhotographerForm.errors)
+            print("\n\n\n ******************************** \n\n\n")
+            print("FORMA JEST INWALIDA")
+        return redirect('/photographers')
+
 
 class AddCeremonyPlaceView(CreateView):
     model = CeremonyPlace
     form_class = CeremonyPlaceForm
     template_name = 'wedding/ceremony_place_add.html'
 
+    def post(self, request):
+        form = CeremonyPlaceForm(self.request.POST)
+        print("\n\n\n ******************************** \n\n\n")
+        print(form)
+        print("\n\n\n ******************************** \n\n\n")
+        print("\n\n\n ******************************** \n\n\n")
+        print(form.data)
+        print("\n\n\n ******************************** \n\n\n")
+        if form.is_valid():
+            form.save()
+            print("ELOELO430")
+        else:
+            print("\n\n\n ******************************** \n\n\n")
+            print(CeremonyPlaceForm.errors)
+            print("\n\n\n ******************************** \n\n\n")
+            print("FORMA JEST INWALIDA")
+        return redirect('/ceremony_places')
+
+
 class AddAdditionalServicesView(CreateView):
     model = AdditionalServices
     form_class = AdditionalServicesForm
     template_name = 'wedding/additionalservices_add.html'
 
+    def post(self, request):
+        form = AdditionalServicesForm(self.request.POST)
+        print("\n\n\n ******************************** \n\n\n")
+        print(form)
+        print("\n\n\n ******************************** \n\n\n")
+        print("\n\n\n ******************************** \n\n\n")
+        print(form.data)
+        print("\n\n\n ******************************** \n\n\n")
+        if form.is_valid():
+            form.save()
+            print("ELOELO430")
+        else:
+            print("\n\n\n ******************************** \n\n\n")
+            print(AdditionalServicesForm.errors)
+            print("\n\n\n ******************************** \n\n\n")
+            print("FORMA JEST INWALIDA")
+        return redirect('/additional_services')
+
 class AddWeddingHallView(CreateView):
     model = WeddingHall
     form_class = WeddingHallForm
-    template_name = 'wedding/wedding_hall_add.html'    
+    template_name = 'wedding/wedding_hall_add.html'
+
+    def post(self, request):
+        form = WeddingHallForm(self.request.POST)
+        print("\n\n\n ******************************** \n\n\n")
+        print(form)
+        print("\n\n\n ******************************** \n\n\n")
+        print("\n\n\n ******************************** \n\n\n")
+        print(form.data)
+        print("\n\n\n ******************************** \n\n\n")
+        if form.is_valid():
+            form.save()
+            print("ELOELO430")
+        else:
+            print("\n\n\n ******************************** \n\n\n")
+            print(WeddingHallForm.errors)
+            print("\n\n\n ******************************** \n\n\n")
+            print("FORMA JEST INWALIDA")
+        return redirect('/wedding_halls')
+
 
 class AddGuestView(CreateView):
     model = Guest
@@ -178,10 +269,16 @@ class PhotographerUpdateView(UpdateView):
     form_class = PhotographerForm
     template_name = 'wedding/photographer_add.html'
 
+    def get_success_url(self):
+        return redirect('photographer-detail', args=(self.object.id,))
+
 class InvitationsUpdateView(UpdateView):
     model=Invitations
     form_class = InvitationsForm
     template_name = 'wedding/invitations_add.html'
+
+    def get_success_url(self):
+        return redirect('invitation-detail', args=(self.object.id,))
 
 
 class CeremonyPlaceUpdateView(UpdateView):
@@ -189,21 +286,33 @@ class CeremonyPlaceUpdateView(UpdateView):
     form_class = CeremonyPlaceForm
     template_name = 'wedding/ceremony_place_add.html'
 
+    def get_success_url(self):
+        return redirect('ceremony_place-detail', args=(self.object.id,))
+
 class GuestUpdateView(UpdateView):
     model=Guest
     form_class = GuestForm
     template_name = 'wedding/guest_add.html'
+
+    def get_success_url(self):
+        return redirect('music-detail', args=(self.object.id,))
 
 class AdditionalServicesUpdateView(UpdateView):
     model=AdditionalServices
     form_class = AdditionalServicesForm
     template_name = 'wedding/additionalservices_add.html'
 
+    def get_success_url(self):
+        return redirect('additional_service-detail', args=(self.object.id,))
+
 
 class WeddingHallUpdateView(UpdateView):
     model=WeddingHall
     form_class = WeddingHallForm
-    template_name = 'wedding/weddinghall_add.html'
+    template_name = 'wedding/wedding_hall_add.html'
+
+    def get_success_url(self):
+        return redirect('wedding_hall-detail', args=(self.object.id,))
 
 
   

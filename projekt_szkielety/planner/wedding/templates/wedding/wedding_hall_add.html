@@ -4,9 +4,12 @@
 <div class="card" style="width: 24rem; background-color: pink; position: relative; left: 40%; right: 60%;" >
     <div class="card-body">
       <h5 class="card-title">Dodaj Salę Weselną</h5>
+      <form action="{% url 'wedding_hall-add' %}" method="post">
                 {% csrf_token %}
                 {{form.accomodation.label}}
                 {{form.accomodation}}
+                {{form.guest_capacity.label}}
+                {{form.guest_capacity}}
                 {{form.name.label}}
                 {{form.name}}
                 {{form.phone_number.label}}
