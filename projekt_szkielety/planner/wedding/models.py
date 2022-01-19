@@ -38,6 +38,9 @@ class Invitations(StandardInfo):
     def get_add_url(self):
         return reverse('invitations-add')
 
+    def get_update_url(self):
+        return reverse('invitations-update', kwargs={'pk' : self.pk})
+
 
 class Photographer(StandardInfo):
     services = models.TextField()
@@ -47,6 +50,9 @@ class Photographer(StandardInfo):
     def get_add_url(self):
         return reverse('photographer-add')
 
+    def get_update_url(self):
+        return reverse('photographer-update', kwargs={'pk' : self.pk})
+
 class CeremonyPlace(StandardInfo):
     guest_capacity = models.PositiveIntegerField()
     def get_absolute_url(self):
@@ -54,6 +60,9 @@ class CeremonyPlace(StandardInfo):
     
     def get_add_url(self):
         return reverse('ceremony_place-add')
+    
+    def get_update_url(self):
+        return reverse('ceremony_place-update', kwargs={'pk' : self.pk})
 
 
 class AdditionalServices(StandardInfo):
@@ -63,6 +72,9 @@ class AdditionalServices(StandardInfo):
     
     def get_add_url(self):
         return reverse('additional_services-add')
+    
+    def get_update_url(self):
+        return reverse('additional_services-update', kwargs={'pk' : self.pk})
 
 
 class WeddingHall(StandardInfo):
@@ -73,6 +85,9 @@ class WeddingHall(StandardInfo):
     
     def get_add_url(self):
         return reverse('wedding_hall-add')
+    
+    def get_update_url(self):
+        return reverse('wedding_hall-update', kwargs={'pk' : self.pk})
 
 
 class Guest(models.Model):
@@ -99,6 +114,9 @@ class Guest(models.Model):
     
     def get_add_url(self):
         return reverse('guest-add')
+    
+    def get_update_url(self):
+        return reverse('guest-update', kwargs={'pk' : self.pk})
 
 
 class Timetable(models.Model):
