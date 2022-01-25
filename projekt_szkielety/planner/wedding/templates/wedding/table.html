@@ -1,11 +1,14 @@
 {% load static %}
 {% load tags %}
-<table class="table">
+<link rel="stylesheet" type="text/css" href="{% static 'wedding/table.css' %}">
+<script src={% static 'wedding/table.js' %}></script>
+<input type="text" id="myInput" onkeyup="searchFunction()" placeholder="Przeszukaj ">
+<table class="table table-bordered" id="myTable">
     <thead>
         <tr class="table-danger">
-            <th scope="col">#</th>
-            {% for column in columns %}
-                <th scope="col">{{column}}</th>
+            <th scope="col" onclick="sortTableById()">#</th>
+            {% for column in column_labels %}
+                <th scope="col", onclick="sortTable({{forloop.counter|add:-1}})">{{column}}</th>
             {% endfor %}
             <th scope="col"> Wyświetl szczegóły</th>
             </tr>
@@ -22,4 +25,4 @@
     {% endfor %}
     </tbody>
   </table>
-  <button type="submit" class="btn btn-dark"><a href={{ add_url }} class="btn btn-dark">Dodaj kolejną opcję</a></button>
+  <button type="submit" class="btn btn-dark" style="position: absolute; right: 50%;"><a href={{ add_url }} class="btn btn-dark">Dodaj kolejną opcję</a></button>
